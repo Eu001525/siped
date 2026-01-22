@@ -5,7 +5,7 @@ O sistema possui login com dois perfis (aluno e administrador). Alunos podem reg
 ## 📸 Telas do Sistema
 
 ### Tela de Login
-![Tela de Login](screenshots/login1.png)
+![Tela de Login](screenshots/login.png)
 
 ### Área do Aluno
 ![Área do Aluno](screenshots/aluno.png)
