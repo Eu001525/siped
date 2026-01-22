@@ -82,10 +82,21 @@ function renderAluno() {
         </div>
       </div>
 
+      <!-- ÁREA DE DENÚNCIAS -->
       <div id="content"></div>
+
+      <!-- LINHA AZUL SEPARADORA (PÁGINA TODA) -->
+      <div class="divisor-azul"></div>
+
+      <!-- ÁREA DE APOIO INSTITUCIONAL -->
+      <div id="setores"></div>
     </div>
   `;
+
+  document.getElementById('setores').innerHTML = renderSetoresCampus();
 }
+
+
 
 function renderDenunciaForm() {
   const content = document.getElementById('content');
@@ -264,5 +275,50 @@ function listarHistorico() {
       `).join('')
     : 'Sem histórico.';
 }
+
+function alunoTemDenuncia() {
+  const lista = getDenuncias();
+  return lista.some(d => d.aluno === usuarioLogado);
+}
+
+function renderSetoresCampus() {
+  if (!alunoTemDenuncia()) return '';
+
+  return `
+    <h2 style="margin-top:30px">Apoio Institucional do Campus</h2>
+
+    <div class="setores-grid">
+
+      <div class="setor-card">
+        <div class="setor-icon">🩺</div>
+        <h3>Setor de Saúde</h3>
+        <p>Apoio psicológico e atendimento à saúde do estudante.</p>
+        <button onclick="alert('Email: saude@campus.edu.br')">
+          Entrar em contato
+        </button>
+      </div>
+
+      <div class="setor-card">
+        <div class="setor-icon">🏫</div>
+        <h3>Coordenação Geral</h3>
+        <p>Responsável pela gestão e encaminhamentos institucionais.</p>
+        <button onclick="alert('Email: coordenacao@campus.edu.br')">
+          Entrar em contato
+        </button>
+      </div>
+
+      <div class="setor-card">
+        <div class="setor-icon">📚</div>
+        <h3>Coordenação Pedagógica</h3>
+        <p>Acompanhamento acadêmico e orientação educacional.</p>
+        <button onclick="alert('Email: pedagogico@campus.edu.br')">
+          Entrar em contato
+        </button>
+      </div>
+
+    </div>
+  `;
+}
+
 
 renderLogin();
